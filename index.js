@@ -36,20 +36,20 @@ app.use(function(req, res, next) {
 })
 
 // Connect to DB
-const db = require('./config/db');
+const db = require('./src/config/db');
 db.connect();
 
 // Route init
-const route = require('./routes')
+const route = require('./src/routes')
 route(app);
 
 // Static public file
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/src', 'public')));
 
 // Template engine
 app.engine('.hbs', exphbs({extname: '.hbs'}));
 app.set('view engine', '.hbs');
-app.set('views', path.join(__dirname, 'resources', 'views'));
+app.set('views', path.join(__dirname, '/src/resources', 'views'));
 
 // HTTP Logger
 app.use(morgan('dev'));

@@ -94,14 +94,14 @@ class AdminController {
 
     // [POST] /admin/store-products
     storeProduct(req, res, next) {
-        const {ID, name, price} = req.body;
-        
-        // const product = new Product(formData);
-        // product.save()
-        //     .then(() => res.redirect('/admin/manage-products'))
-        //     .catch(error => {
-        //         console.log(`Insert products data failed`)
-        //     })
+        const formData = req.body;
+
+        const product = new Product(formData);
+        product.save()
+            .then(() => res.redirect('/admin/manage-products'))
+            .catch(error => {
+                console.log(`Insert products data failed`)
+            })
     }
 
     // [GET] /admin/manage-staff/:id/edit
